@@ -40,7 +40,9 @@ module.exports = function (app) {
 
         const returnNum = convertHandler.convert(initNum, initUnit);
         const returnUnit = convertHandler.getReturnUnit(initUnit);
-        const string = `${initNum} ${initUnit} converts to ${returnNum} ${returnUnit}`;
+        const string = `${initNum} ${convertHandler.spellOutUnit(
+          initUnit
+        )} converts to ${returnNum} ${convertHandler.spellOutUnit(returnUnit)}`;
         initUnit = initUnit == "l" ? "L" : initUnit;
         res.json({ initNum, initUnit, returnNum, returnUnit, string });
       } catch {
